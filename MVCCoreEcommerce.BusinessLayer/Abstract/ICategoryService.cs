@@ -2,8 +2,8 @@
 
 namespace MVCCoreEcommerce.BusinessLayer.Abstract
 {
-    public interface ICategoryService : IGenericService<About>
+    public interface ICategoryService : IGenericService<Category>
     {
-     
+
     }
 }

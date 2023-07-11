@@ -11,5 +11,6 @@ namespace MVCCoreEcommerce.DtoLayer.Dto.CategoryDto
         public string Name { get; set; }
         public string Picture { get; set; }
         public string Description { get; set; }
+        public bool IsStatus { get; set; }
     }
 }
