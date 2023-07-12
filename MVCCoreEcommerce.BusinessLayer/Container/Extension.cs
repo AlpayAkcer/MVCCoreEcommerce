@@ -13,7 +13,6 @@ namespace MVCCoreEcommerce.BusinessLayer.Container
         {
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ICategoryDal, EfCategoryDal>();
-
         }
     }
 }

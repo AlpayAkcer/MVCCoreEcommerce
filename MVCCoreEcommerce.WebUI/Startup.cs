@@ -1,3 +1,4 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using MVCCoreEcommerce.BusinessLayer.Container;
 using MVCCoreEcommerce.BusinessLayer.Validator;
 using MVCCoreEcommerce.DataAccessLayer.Concrete;
+using MVCCoreEcommerce.DtoLayer.Dto.AppUserDto;
 using MVCCoreEcommerce.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -40,17 +42,31 @@ namespace MVCCoreEcommerce.WebUI
                 .AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider)
                 .AddEntityFrameworkStores<Context>();
 
+            services.AddTransient<IValidator<AppUserLogInDto>, AppUserLoginValidator>();
+            services.AddTransient<IValidator<AppUserRegisterDto>, AppUserRegisterValidator>();
+
             //Business katmanýndaki container içindeki verileri barýndýrýr.
             services.ContainerDependencies();
 
             services.AddHttpClient();
-            //services.AddMvc(config =>
-            //{
-            //    var policy = new AuthorizationPolicyBuilder()
-            //    .RequireAuthenticatedUser()
-            //    .Build();
-            //    config.Filters.Add(new AuthorizeFilter(policy));
-            //});
+
+            //Kullanýcý sayfalarýný yaptýktan sonra, startup kýsmýna autorize olabilmesi için bu ayarýn ve altýndaki ayarýn eklenmesi gerekiyor.
+            //Altta ayar ise, kullanýcý veya adminin giriþ yapmasý gereken yolu ve ne kadar zaman cookiede saklanmasýný belirtiyor.
+            //options dedikten sonra bir çok ayar var kontrol edilmesi gerekiyor.Ýsteðe göre ayarlar çoðaltýlabilir.
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromDays(1);
+                options.LoginPath = "/Login/";
+            });
 
         }
 
@@ -71,7 +87,7 @@ namespace MVCCoreEcommerce.WebUI
             app.UseStaticFiles();
 
             //identity eklendikten sonra buda eklenmeli
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();

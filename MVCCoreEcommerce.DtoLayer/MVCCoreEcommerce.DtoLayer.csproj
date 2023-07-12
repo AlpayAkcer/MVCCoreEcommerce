@@ -19,4 +19,11 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.17" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dto\AppUserRoleDto\" />
+    <Folder Include="Dto\PropertyDto\" />
+    <Folder Include="Dto\OrderLineDto\" />
+    <Folder Include="Dto\OrderDto\" />
+  </ItemGroup>
+
 </Project>

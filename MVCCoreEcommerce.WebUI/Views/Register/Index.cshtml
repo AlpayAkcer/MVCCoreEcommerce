@@ -1,0 +1,47 @@
+﻿@model AppUserRegisterDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_RegisterLayout.cshtml";
+}
+
+<div class="inner">
+    <img src="~/Register/images/image-1.png" alt="" class="image-1">
+    <form method="post">
+        <h3>New Account?</h3>
+        <div class="form-holder">
+            <span class="lnr lnr-user"></span>
+            <input type="text" class="form-control" placeholder="Adınız" asp-for="Name">
+            <span asp-validation-for="Name" class="text-warning"></span>
+        </div>
+        <div class="form-holder">
+            <span class="lnr lnr-phone-handset"></span>
+            <input type="text" class="form-control" placeholder="Soyadınız" asp-for="Surname">
+            <span asp-validation-for="Surname" class="text-warning"></span>
+        </div>
+        <div class="form-holder">
+            <span class="lnr lnr-envelope"></span>
+            <input type="text" class="form-control" placeholder="Kullanıcı Adınız" asp-for="UserName">
+            <span asp-validation-for="UserName" class="text-warning"></span>
+        </div>
+        <div class="form-holder">
+            <span class="lnr lnr-lock"></span>
+            <input type="text" class="form-control" placeholder="Mail Adresiniz" asp-for="Email">
+            <span asp-validation-for="Email" class="text-warning"></span>
+        </div>
+        <div class="form-holder">
+            <span class="lnr lnr-lock"></span>
+            <input type="password" class="form-control" placeholder="Şifreniz" asp-for="Password">
+            <span asp-validation-for="Password" class="text-warning"></span>
+        </div>
+        <div class="form-holder">
+            <span class="lnr lnr-lock"></span>
+            <input type="password" class="form-control" placeholder="Şifrenizi Tekrar Giriniz" asp-for="ConfirmPassword">
+            <span asp-validation-for="ConfirmPassword" class="text-warning"></span>
+        </div>
+        <button>
+            <span>Register</span>
+        </button>
+    </form>
+    <img src="~/Register/images/image-2.png" alt="" class="image-2">
+</div>
+

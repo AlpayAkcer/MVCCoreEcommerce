@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+@Html.Partial("~/Views/MemberPartial/_MemberHeaderScriptPartial.cshtml")
+
+<body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-chartbg" data-col="2-columns">
+
+
+    @Html.Partial("~/Views/MemberPartial/_MemberNavbarHeaderPartial.cshtml")
+
+    @Html.Partial("~/Views/MemberPartial/_MemberSidebarPartial.cshtml")   
+
+    @RenderBody()
+
+    @Html.Partial("~/Views/MemberPartial/_MemberFooterScriptPartial.cshtml")
+
+</body>
+</html>
