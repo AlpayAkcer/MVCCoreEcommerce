@@ -7,5 +7,8 @@ namespace MVCCoreEcommerce.DataAccessLayer.EntityFramework
 {
     public class EfCategoryDal : GenericRepository<Category>, ICategoryDal
     {
+        public EfCategoryDal(Context context) : base(context)
+        {
+        }
     }
 }

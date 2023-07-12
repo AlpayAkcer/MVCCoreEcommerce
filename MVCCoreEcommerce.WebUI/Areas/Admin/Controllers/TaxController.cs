@@ -6,8 +6,7 @@ namespace MVCCoreEcommerce.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class TaxController : Controller
-    {
-        TaxManager taxManager = new TaxManager(new EfTaxDal());
+    {       
         public IActionResult Index()
         {
             return View();

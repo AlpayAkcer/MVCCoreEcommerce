@@ -11,7 +11,7 @@ namespace MVCCoreEcommerce.BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        ICategoryDal _categoryDal;
+        private readonly ICategoryDal _categoryDal;
 
         public CategoryManager(ICategoryDal categoryDal)
         {
@@ -30,12 +30,12 @@ namespace MVCCoreEcommerce.BusinessLayer.Concrete
 
         public Category TGetByID(int id)
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetById(id);
         }
 
         public List<Category> TGetList()
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetAll();
         }
 
         public void TUpdate(Category t)

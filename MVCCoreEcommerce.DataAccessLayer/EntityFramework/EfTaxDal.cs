@@ -1,4 +1,5 @@
 ﻿using MVCCoreEcommerce.DataAccessLayer.Abstract;
+using MVCCoreEcommerce.DataAccessLayer.Concrete;
 using MVCCoreEcommerce.DataAccessLayer.Repository;
 using MVCCoreEcommerce.EntityLayer.Concrete;
 using System;
@@ -11,5 +12,8 @@ namespace MVCCoreEcommerce.DataAccessLayer.EntityFramework
 {
     public class EfTaxDal : GenericRepository<Tax>, ITaxDal
     {
+        public EfTaxDal(Context context) : base(context)
+        {
+        }
     }
 }

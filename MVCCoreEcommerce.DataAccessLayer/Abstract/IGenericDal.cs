@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace MVCCoreEcommerce.DataAccessLayer.Abstract
 {
-    public interface IGenericDal<T>
+    public interface IGenericDal<T> where T : class
     {
         void Insert(T entity);
         void Update(T entity);

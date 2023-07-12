@@ -1,0 +1,25 @@
+﻿@model CategoryUpdateDto
+@{
+    ViewData["Title"] = "UpdateCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>UpdateCategory</h1>
+
+
+<form method="post">
+    <input type="hidden" asp-for="CategoryID" />
+    <div class="form-group">
+        <label for="exampleInputEmail1">Kategori Adı</label>
+        <input type="text" class="form-control" asp-for="Name" id="exampleInputEmail1" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Kategori Açıklaması</label>
+        <input type="text" class="form-control" asp-for="Description" id="exampleInputEmail1" placeholder="Enter email">
+    </div>
+    <div class="form-check">
+        <input type="checkbox" asp-for="IsStatus" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Aktif mi?</label>
+    </div>
+    <button type="submit" class="btn btn-success">Güncelle</button>
+</form>

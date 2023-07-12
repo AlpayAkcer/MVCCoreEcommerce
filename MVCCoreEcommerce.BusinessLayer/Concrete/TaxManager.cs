@@ -11,7 +11,7 @@ namespace MVCCoreEcommerce.BusinessLayer.Concrete
 {
     public class TaxManager : ITaxService
     {
-        ITaxDal _taxdal;
+        private readonly ITaxDal _taxdal;
 
         public TaxManager(ITaxDal taxdal)
         {
