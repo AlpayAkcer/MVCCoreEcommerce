@@ -8,5 +8,12 @@ namespace MVCCoreEcommerce.EntityLayer.Concrete
 {
     public class Property
     {
+        public int PropertyId { get; set; }
+
+        public string Attribute { get; set; }
+        public string Value { get; set; }
+
+        public int ProductID { get; set; }
+        public Product Product { get; set; }
     }
 }

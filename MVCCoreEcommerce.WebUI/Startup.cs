@@ -61,11 +61,18 @@ namespace MVCCoreEcommerce.WebUI
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.Cookie.HttpOnly = true;
+            //    options.ExpireTimeSpan = TimeSpan.FromDays(1);
+            //    options.LoginPath = "/Login/";
+            //});
+
             services.ConfigureApplicationCookie(options =>
             {
-                options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromDays(1);
-                options.LoginPath = "/Login/";
+                options.LoginPath = $"/Login";
+                options.LogoutPath = $"/Logout";
+                options.AccessDeniedPath = $"/Admin/AccessDenied";
             });
 
         }
@@ -89,22 +96,30 @@ namespace MVCCoreEcommerce.WebUI
             //identity eklendikten sonra buda eklenmeli
             app.UseAuthentication();
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //      name: "areas",
+            //      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+            //    );
+            //});
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                  name: "areas",
-                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
+                    pattern: "{area=Member}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
 
         }

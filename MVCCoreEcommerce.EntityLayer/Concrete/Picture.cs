@@ -8,5 +8,9 @@ namespace MVCCoreEcommerce.EntityLayer.Concrete
 {
     public class Picture
     {
+        public int PictureID { get; set; }
+        public string ImageName { get; set; }
+        public int ProductID { get; set; }
+        public Product Product { get; set; }
     }
 }

@@ -21,9 +21,13 @@
 
   <ItemGroup>
     <Folder Include="Dto\AppUserRoleDto\" />
-    <Folder Include="Dto\PropertyDto\" />
     <Folder Include="Dto\OrderLineDto\" />
+    <Folder Include="Dto\PropertyDto\" />
     <Folder Include="Dto\OrderDto\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MVCCoreEcommerce.EntityLayer\MVCCoreEcommerce.EntityLayer.csproj" />
   </ItemGroup>
 
 </Project>

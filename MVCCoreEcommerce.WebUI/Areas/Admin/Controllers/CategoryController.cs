@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MVCCoreEcommerce.BusinessLayer.Abstract;
 using MVCCoreEcommerce.DtoLayer.Dto.CategoryDto;
 using MVCCoreEcommerce.EntityLayer.Concrete;
 using System;
+using System.Data;
 
 namespace MVCCoreEcommerce.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;

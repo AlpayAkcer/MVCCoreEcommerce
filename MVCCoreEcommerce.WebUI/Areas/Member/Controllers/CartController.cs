@@ -2,8 +2,7 @@
 
 namespace MVCCoreEcommerce.WebUI.Areas.Member.Controllers
 {
-    [Area("Customer")]
-    public class MemberDashboardController : Controller
+    public class CartController : Controller
     {
         public IActionResult Index()
         {

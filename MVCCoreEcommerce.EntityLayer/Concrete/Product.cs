@@ -28,5 +28,8 @@ namespace MVCCoreEcommerce.EntityLayer.Concrete
         public decimal ListPrice { get; set; }
         public int Stock { get; set; }
         public bool IsStatus { get; set; }
+
+        public List<Property> Properties { get; set; }
+        public List<Picture> Pictures { get; set; }
     }
 }
